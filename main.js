@@ -1,5 +1,5 @@
 class Bamski {
-    constructor(name, age, money, job, health, happiness, smarts, clout) {
+    constructor(name, age = 0, money = 0, job = "Unemployed", health = 100, happiness = 100, smarts = 100, clout = 0) {
         this.name = name;
         this.age = age;
         this.money = money;
@@ -10,14 +10,20 @@ class Bamski {
         this.clout = clout;
     }
 }
-const startButton = document.getElementById('start-button');
+const startForm = document.getElementById('start-form');
 const bgAudio = document.getElementById('background-audio');
 let bamski = undefined;
 let started = false;
 
-startButton.addEventListener('click', () => {
+startForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const nameInput = document.getElementById('name-input').value.trim();
+    if (nameInput === "") {
+        alert("Please enter your name.");
+        return;
+    }
     if (!started) {
-        bamski = new Bamski("Bämski", 0, 0, "Unemployed", 100, 100, 100, 0);
+        bamski = new Bamski(nameInput);
         started = true;
         bgAudio.volume = 0.2;
         bgAudio.play();
@@ -28,9 +34,9 @@ startButton.addEventListener('click', () => {
     }
 });
 
+
 const startgame = () => {
     // Bitlife starts here
-    const name = prompt("Enter your Bämski's name:");
-    document.getElementById('game-text').innerHTML = `Welcome, ${name}! Your journey begins now.`;
+    document.getElementById('game-text').innerHTML = `Welcome, ${bamski.name}! Your journey begins now.`;
     document.getElementById('start-button').innerHTML = '[ +1 Year ]';
 }
