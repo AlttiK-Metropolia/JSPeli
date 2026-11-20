@@ -1,0 +1,17 @@
+{
+    "minAge": 13,
+    "maxAge": 19,
+    "text": "Kaverit ehdottavat legendaarista Bämski-tempausta koulun jälkeen.",
+    "choices": [
+      {
+        "label": "Lähdetään!",
+        "effects": { "happiness": 15, "clout": 20, "health": 10, "smarts": -5 },
+        "resultText": "Tempaus onnistui! Polvi aukesi, mutta olet koulun legenda."
+      },
+      {
+        "label": "Jään kotiin pelaamaan",
+        "effects": { "happiness": 5, "clout": -5, "smarts": 5 },
+        "resultText": "Otit rennosti kotona ja säästyit kolhuilta."
+      }
+    ]
+  }
