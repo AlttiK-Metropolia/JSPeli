@@ -1,6 +1,111 @@
-{
+
+[
+  {
+    "minAge": 5,
+    "maxAge": 10,
+    "chance": 25,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Äiti sanoo, että olet liian pieni menemään yksin kauppaan. Mutta sinä olet oman elämäsi bämski.",
+    "choices": [
+      {
+        "label": "Lähden ostamaan energiajuomaa",
+        "effects": { "happiness": 20, "clout": 15, "health": -5, "smarts": -5 },
+        "resultText": "Palasit kotiin kaksi tuntia myöhemmin. Energiajuoma oli loppu, mutta sait kaupasta ilmaisen tarran."
+      },
+      {
+        "label": "Kuuntelen äitiä",
+        "effects": { "happiness": -5, "smarts": 10 },
+        "resultText": "Äiti oli tyytyväinen. Sinä et ollut."
+      }
+    ]
+  },
+  {
+    "minAge": 6,
+    "maxAge": 12,
+    "chance": 30,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Välitunnilla joku sanoo, että sinulla on NPC-hiukset.",
+    "choices": [
+      {
+        "label": "Vedän bämski-aura päälle",
+        "effects": { "happiness": 10, "clout": 25, "smarts": -5 },
+        "resultText": "Koko piha hiljeni. Jopa rehtori tunsi sinun aurasi."
+      },
+      {
+        "label": "Pyydän uutta hiustyyliä",
+        "effects": { "happiness": 5, "smarts": 5 },
+        "resultText": "Sait uuden kampauksen. NPC-kommentit loppuivat."
+      }
+    ]
+  },
+  {
+    "minAge": 7,
+    "maxAge": 12,
+    "chance": 20,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Luokkasi järjestää talent show'n. Sinulla on yksi mahdollisuus näyttää bämski-taitosi.",
+    "choices": [
+      {
+        "label": "Esitän sigma-tanssin",
+        "effects": { "happiness": 20, "clout": 30, "health": -5 },
+        "resultText": "Esitys oli niin voimakas, että koulun projektori sammui."
+      },
+      {
+        "label": "Laulan mis on kaikki bämskit?",
+        "effects": { "happiness": 10, "smarts": 10, "clout": 5 },
+        "resultText": "Opettaja liikuttui. Sinut valittiin luokan musiikkivastaavaksi."
+      }
+    ]
+  },
+  {
+    "minAge": 7,
+    "maxAge": 11,
+    "chance": 15,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Koulukaverisi Jaana väittää, että olit työntänyt paskaa Jarmon reppuun välitunnin aikana.",
+    "choices": [
+      {
+        "label": "Hakkaa Jaana",
+        "effects": { "happiness": 15, "clout": 10, "health": -5, "smarts": -5 },
+        "resultText": "Hakkasit Jaanan, kaikki alkoivat hurraamaan ja joku kaatoi Jarmon reppuun tungetut paskat Jaanan päälle."
+      },
+      {
+        "label": "Kerro opettajalle",
+        "effects": { "happiness": -5, "clout": -20, "smarts": 5 },
+        "resultText": "Opettaja uskoi sinua ja Jaana joutui jälki-istuntoon. Luokkakaverit pitävät sinua nyt kuitenkin koulun pahimpana vasikkana."
+      }
+    ]
+  },
+  {
     "minAge": 13,
     "maxAge": 19,
+    "chance": 20,
+    "requirements": {
+      "happiness": 0,
+      "clout": 5,
+      "health": 20,
+      "smarts": 0
+    },
     "text": "Kaverit ehdottavat legendaarista Bämski-tempausta koulun jälkeen.",
     "choices": [
       {
@@ -14,4 +119,125 @@
         "resultText": "Otit rennosti kotona ja säästyit kolhuilta."
       }
     ]
+  },
+  {
+    "minAge": 13,
+    "maxAge": 19,
+    "chance": 25,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Näet koulun käytävällä todella hyvännäköisen bämskin. Hän katsoo sinua kaksi sekuntia.",
+    "choices": [
+      {
+        "label": "Katson takaisin auraa säteillen",
+        "effects": { "happiness": 20, "clout": 15 },
+        "resultText": "Katsekontakti kesti 2 sekuntia. Olet jo suunnittelemassa yhteistä asuntolainaa."
+      },
+      {
+        "label": "Käännän katseen paniikissa",
+        "effects": { "happiness": -5, "smarts": 5 },
+        "resultText": "Päädyit katsomaan lattiaa. Lattia ei kuitenkaan ollut bämski."
+      }
+    ]
+  },
+  {
+    "minAge": 14,
+    "maxAge": 19,
+    "chance": 30,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Kaverisi pyytää sinua mukaan legendaariseen koulun jälkeiseen kebab-reissuun.",
+    "choices": [
+      {
+        "label": "Tilaan kaiken",
+        "effects": { "happiness": 25, "health": -10, "clout": 10 },
+        "resultText": "Söit kolme kebabia ja joit kaksi litraa limua. Kassalla sinua kutsuttiin kuninkaaksi."
+      },
+      {
+        "label": "Otan vain ranskalaiset",
+        "effects": { "happiness": 5, "health": 5, "smarts": 5 },
+        "resultText": "Säästit rahaa, mutta kebab-aura jäi kokematta."
+      }
+    ]
+  },
+  {
+    "minAge": 15,
+    "maxAge": 19,
+    "chance": 20,
+    "requirements": {
+      "happiness": 0,
+      "clout": 5,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Sinut lisätään ryhmächattiin nimeltä 'BÄMSKIT 🔥'. Viestejä tulee 847 tunnissa.",
+    "choices": [
+      {
+        "label": "Lähetän 47 meemiä",
+        "effects": { "happiness": 20, "clout": 25, "smarts": -5 },
+        "resultText": "Sinusta tuli ryhmän virallinen meemiministeri."
+      },
+      {
+        "label": "Mykistän ryhmän",
+        "effects": { "happiness": 10, "smarts": 10 },
+        "resultText": "Sait elämäsi takaisin. Ryhmässä tapahtui sillä välin kolme eroa ja yksi yrityskauppa."
+      }
+    ]
+  },
+  {
+    "minAge": 16,
+    "maxAge": 19,
+    "chance": 15,
+    "requirements": {
+      "happiness": 0,
+      "clout": 5,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Olet julkaissut TikTokiin bämski-videon. Se saa ensimmäisen tunnin aikana 3 katselukertaa.",
+    "choices": [
+      {
+        "label": "Julkaisen lisää",
+        "effects": { "happiness": 10, "clout": 30 },
+        "resultText": "Seuraava video sai 2 miljoonaa katselukertaa. Sinusta tuli Suomen kansallinen ilmiö."
+      },
+      {
+        "label": "Poistan videon",
+        "effects": { "happiness": 5, "smarts": 10 },
+        "resultText": "Poistit videon. Yksi katsojista oli kuitenkin tuleva kohumiljardööri."
+      }
+    ]
+  },
+  {
+    "minAge": 18,
+    "maxAge": 18,
+    "chance": 100,
+    "requirements": {
+      "happiness": 0,
+      "clout": 0,
+      "health": 0,
+      "smarts": 0
+    },
+    "text": "Täytit juuri 18!",
+    "choices": [
+      {
+        "label": "Lähde ulos juhlimaan kavereiden kanssa",
+        "effects": { "happiness": 0, "smarts": 0, "clout": 5 },
+        "resultText": "Menitte kavereiden kanssa irkkuun... Seuraavana aamuna et muista mitään, mutta kännykältäsi löytyy 5 uutta puhelinnumeroa ja lähestymiskielto."
+      },
+      {
+        "label": "Juhlin rauhallisesti kotona",
+        "effects": { "happiness": 10, "health": 5, "smarts": 5 },
+        "resultText": "Vietit rauhallisen syntymäpäivän. Kaverit lähettivät onnittelut ja sait vihdoin nukkua kunnon yöunet."
+      }
+    ]
   }
+]
