@@ -11,6 +11,7 @@ class Bamski {
         this.health = randomInt(70, 100);
         this.happiness = randomInt(50, 100);
         this.smarts = randomInt(20, 100);
+        this.looks = randomInt(20, 100);
         this.clout = 0;
     }
 
@@ -26,9 +27,6 @@ class Bamski {
         }
     }
 }
-
-// Todennäköisyys että vuoden aikana tulee eventti
-const EVENT_CHANCE = 0.5;
 
 const startForm = document.getElementById('start-form');
 const gameContainer = document.getElementById('game-container');
@@ -92,17 +90,21 @@ const log = (text) => {
     const p = document.createElement('p');
     p.textContent = text;
     lifeLog.appendChild(p);
+    lifeLog.scrollTop = lifeLog.scrollHeight;
 };
 
 // Päivittää bämääään tiedot näkyviin
 const render = () => {
-    document.getElementById('profile').textContent =
-        `${bamski.name} | Ikä: ${bamski.age} | ${bamski.job} | ${bamski.money} €`;
+    document.getElementById('profile-container').innerHTML = `
+        <p id="profile">${bamski.name} | Ikä: ${bamski.age} | ${bamski.job}</p>
+        <p id="money">${bamski.money} €</p>
+    `;
     document.getElementById('stats').innerHTML = `
-        <li>Terveys: ${bamski.health}</li>
-        <li>Iloisuus: ${bamski.happiness}</li>
-        <li>Älykkyyys: ${bamski.smarts}</li>
-        <li>Cloutti: ${bamski.clout}</li>`;
+        <li>Terveys: ${bamski.health} %</li>
+        <li>Iloisuus: ${bamski.happiness} %</li>
+        <li>Älykkyyys: ${bamski.smarts} %</li>
+        <li>Ulkonäkö: ${bamski.looks} %</li>
+        <li>Cloutti: ${bamski.clout} %</li>`;
 };
 
 startForm.addEventListener('submit', (event) => {
@@ -133,9 +135,7 @@ const startgame = async () => {
 ageButton.addEventListener('click', () => {
     bamski.age += 1;
     log(`Ikä ${bamski.age}!`);
-    if (Math.random() < EVENT_CHANCE) {
-        const event = pickEvent();
-        if (event) showEvent(event);
-    }
+    const event = pickEvent();
+    if (event) showEvent(event);
     render();
 });
