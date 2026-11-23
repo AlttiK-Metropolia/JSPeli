@@ -14,12 +14,26 @@
     <div class="container">
         <h1>BämskiLife</h1>
         <div id="game-container">
-            <p id="game-text">Welcome to BämskiLife! Click the button below to start your journey.</p>
+            <p id="game-text">Tervetuloa BämskiLife-peliin! Klikkaa painiketta alkaaksesi matkasi.</p>
             <form id="start-form">
-                <label for="name-input">Enter your Bämski's name:</label>
-                <input type="text" id="name-input" placeholder="Enter your name" />
-                <button id="start-button" type="submit">Start Game</button>
+                <label for="name-input">Syötä Bämskisi nimi:</label>
+                <input type="text" id="name-input" placeholder="Syötä nimesi" />
+                <p id="name-error" class="error" hidden>Syötä nimi ennen kuin aloitat.</p>
+                <button id="start-button" type="submit">Aloita peli</button>
             </form>
+        </div>
+        <div id="game-screen" hidden>
+            <div id="profile-container">
+                <p id="profile"></p>
+                <p id="money"></p>
+            </div>
+            <div id="life-log"></div>
+            <div id="event-box" hidden>
+                <p id="event-text"></p>
+                <div id="event-choices"></div>
+            </div>
+            <button id="age-button"><div>+</div>Ikä</button>
+            <ul id="stats"></ul>
         </div>
     </div>
 </body>
