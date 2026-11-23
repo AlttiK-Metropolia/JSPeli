@@ -108,10 +108,12 @@ const render = () => {
 startForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const nameInput = document.getElementById('name-input').value.trim();
+    const nameError = document.getElementById('name-error');
     if (nameInput === "") {
-        alert("Please enter your name.");
+        nameError.hidden = false;
         return;
     }
+    nameError.hidden = true;
     bamski = new Bamski(nameInput);
     bgAudio.volume = 0.2;
     bgAudio.play();
