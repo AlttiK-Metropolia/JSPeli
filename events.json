@@ -96,30 +96,7 @@
       }
     ]
   },
-  {
-    "minAge": 13,
-    "maxAge": 19,
-    "chance": 20,
-    "requirements": {
-      "happiness": 0,
-      "clout": 5,
-      "health": 20,
-      "smarts": 0
-    },
-    "text": "Kaverit ehdottavat legendaarista Bämski-tempausta koulun jälkeen.",
-    "choices": [
-      {
-        "label": "Lähdetään!",
-        "effects": { "happiness": 15, "clout": 20, "health": 10, "smarts": -5 },
-        "resultText": "Tempaus onnistui! Polvi aukesi, mutta olet koulun legenda."
-      },
-      {
-        "label": "Jään kotiin pelaamaan",
-        "effects": { "happiness": 5, "clout": -5, "smarts": 5 },
-        "resultText": "Otit rennosti kotona ja säästyit kolhuilta."
-      }
-    ]
-  },
+
   {
     "minAge": 13,
     "maxAge": 19,
@@ -159,7 +136,7 @@
       {
         "label": "Tilaan kaiken",
         "effects": { "happiness": 25, "health": -10, "clout": 10 },
-        "resultText": "Söit kolme kebabia ja joit kaksi litraa limua. Kassalla sinua kutsuttiin kuninkaaksi."
+        "resultText": "Söit kolme kebabia ja joit kaksi litraa limua. Kassalla sinua kutsuttiin kuningattareeksi."
       },
       {
         "label": "Otan vain ranskalaiset",
