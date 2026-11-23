@@ -132,10 +132,18 @@ const startgame = async () => {
     render();
 };
 
+const deadCheck = () => {
+    if (bamski.health <= 0 || bamski.age >= 120) {
+        log(`Ikä ${bamski.age}: Kuolin huonoon terveyteen.`);
+        ageButton.disabled = true;
+    }
+};
+
 ageButton.addEventListener('click', () => {
     bamski.age += 1;
     log(`Ikä ${bamski.age}!`);
     const event = pickEvent();
     if (event) showEvent(event);
+    deadCheck();
     render();
 });
