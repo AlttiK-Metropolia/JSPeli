@@ -1,19 +1,45 @@
+// Arpoo kokonaisluvun väliltä min-max
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 class Bamski {
-    constructor(name, age = 0, money = 0, job = "Unemployed", health = 100, happiness = 100, smarts = 100, clout = 0) {
+    constructor(name) {
         this.name = name;
-        this.age = age;
-        this.money = money;
-        this.job = job;
-        this.health = health;
-        this.happiness = happiness;
-        this.smarts = smarts;
-        this.clout = clout;
+        this.age = 0;
+        this.money = 0;
+        this.job = "Unemployed";
+        // BitLifen tapaan aloitusarvot arvotaan
+        this.health = randomInt(70, 100);
+        this.happiness = randomInt(50, 100);
+        this.smarts = randomInt(20, 100);
+        this.clout = 0;
     }
 }
+
 const startForm = document.getElementById('start-form');
+const gameContainer = document.getElementById('game-container');
+const gameScreen = document.getElementById('game-screen');
+const lifeLog = document.getElementById('life-log');
+const ageButton = document.getElementById('age-button');
 const bgAudio = document.getElementById('background-audio');
 let bamski = undefined;
-let started = false;
+
+// Lisää rivin elämän logii
+const log = (text) => {
+    const p = document.createElement('p');
+    p.textContent = text;
+    lifeLog.appendChild(p);
+};
+
+// Päivittää bämääään tiedot näkyviin
+const render = () => {
+    document.getElementById('profile').textContent =
+        `${bamski.name} | Age: ${bamski.age} | ${bamski.job} | ${bamski.money} €`;
+    document.getElementById('stats').innerHTML = `
+        <li>Health: ${bamski.health}</li>
+        <li>Happiness: ${bamski.happiness}</li>
+        <li>Smarts: ${bamski.smarts}</li>
+        <li>Clout: ${bamski.clout}</li>`;
+};
 
 startForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -22,21 +48,22 @@ startForm.addEventListener('submit', (event) => {
         alert("Please enter your name.");
         return;
     }
-    if (!started) {
-        bamski = new Bamski(nameInput);
-        started = true;
-        bgAudio.volume = 0.2;
-        bgAudio.play();
-        startgame();
-    } else {
-        bamski.age += 1;
-        document.getElementById('game-text').innerHTML = `Year: ${bamski.age}. Your journey continues!`;
-    }
+    bamski = new Bamski(nameInput);
+    bgAudio.volume = 0.2;
+    bgAudio.play();
+    startgame();
 });
 
-
 const startgame = () => {
-    // Bitlife starts here
-    document.getElementById('game-text').innerHTML = `Welcome, ${bamski.name}! Your journey begins now.`;
-    document.getElementById('start-button').innerHTML = '[ +1 Year ]';
-}
+    gameContainer.hidden = true;
+    gameScreen.hidden = false;
+    lifeLog.innerHTML = '';
+    log(`Age 0: I was born as ${bamski.name}.`);
+    render();
+};
+
+ageButton.addEventListener('click', () => {
+    bamski.age += 1;
+    log(`Age ${bamski.age}!`);
+    render();
+});
