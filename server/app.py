@@ -21,6 +21,13 @@ def events():
         return jsonify(json.load(f))
 
 
+# Palauttaa aktiviteetit JSON-muodossa
+@app.route("/api/activities")
+def activities():
+    with open(BASE_DIR / "activities.json", encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
 # Muut tiedostot
 @app.route("/<path:filename>")
 def static_files(filename):

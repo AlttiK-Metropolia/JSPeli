@@ -33,22 +33,44 @@ const gameContainer = document.getElementById('game-container');
 const gameScreen = document.getElementById('game-screen');
 const lifeLog = document.getElementById('life-log');
 const ageButton = document.getElementById('age-button');
+const relationButton = document.getElementById('relation-button');
+const activitiesButton = document.getElementById('activities-button');
 const bgAudio = document.getElementById('background-audio');
 const eventBox = document.getElementById('event-box');
 const eventText = document.getElementById('event-text');
 const eventChoices = document.getElementById('event-choices');
+const activitiesBox = document.getElementById('activities-box');
+const activitiesChoices = document.getElementById('activities-choices');
+const relationBox = document.getElementById('relation-box');
 let bamski = undefined;
 let events = [];
+let activities = [];
 let usedEvents = []; // samaa eventtiä ei tule kahdesti samassa elämässä
+let usedActivities = []; // saman vuoden aikana tehdyt aktiviteetit
 
 // Hakee eventit events.json-tiedostosta
 const loadEvents = async () => {
     try {
         const response = await fetch('/api/events');
-        events = await response.json();
+        const data = await response.json();
+        events = Array.isArray(data) ? data : [data];
     } catch (error) {
         console.error('Eventtien lataus epäonnistui', error);
         events = [];
+    }
+};
+
+// Hakee aktiviteetit activities.json-tiedostosta
+const loadActivities = async () => {
+    try {
+        let response = await fetch('/api/activities');
+        if (!response.ok) {
+            response = await fetch('/activities.json');
+        }
+        activities = await response.json();
+    } catch (error) {
+        console.error('Aktiviteettien lataus epäonnistui', error);
+        activities = [];
     }
 };
 
@@ -72,8 +94,12 @@ const showEvent = (event) => {
         button.addEventListener('click', () => chooseOption(choice));
         eventChoices.appendChild(button);
     }
+    activitiesBox.hidden = true;
+    relationBox.hidden = true;
     eventBox.hidden = false;
-    ageButton.disabled = true; // vuosi ei etene ennen kuin valitaan
+    ageButton.disabled = true;
+    activitiesButton.disabled = true;
+    relationButton.disabled = true;
 };
 
 // Pelaaja valitsi vaihtoehdon
@@ -82,6 +108,60 @@ const chooseOption = (choice) => {
     log(choice.resultText);
     eventBox.hidden = true;
     ageButton.disabled = false;
+    activitiesButton.disabled = false;
+    relationButton.disabled = false;
+    deadCheck();
+    render();
+};
+
+// Näyttää ikään sopivat aktiviteetit
+const showActivities = () => {
+    const available = activities.filter((a) => bamski.age >= a.minAge && bamski.age <= a.maxAge);
+    activitiesChoices.innerHTML = '';
+
+    for (const activity of available) {
+        const cost = activity.cost || 0;
+        const alreadyDone = usedActivities.includes(activity.id);
+        const canAfford = bamski.money >= cost;
+        const button = document.createElement('button');
+
+        let label = activity.label;
+        if (cost > 0) label += ` (${cost} €)`;
+        if (alreadyDone) label += ' — Tehty';
+        else if (!canAfford) label += ' — Ei varaa';
+
+        button.textContent = label;
+        button.disabled = alreadyDone || !canAfford;
+        button.addEventListener('click', () => doActivity(activity));
+        activitiesChoices.appendChild(button);
+    }
+
+    relationBox.hidden = true;
+    activitiesBox.hidden = false;
+};
+
+// Arpoo lopputuloksen aktiviteetille, jossa on useita vaihtoehtoja (outcomes)
+const pickOutcome = (outcomes) => {
+    const roll = randomInt(1, 100);
+    let cumulative = 0;
+    for (const outcome of outcomes) {
+        cumulative += outcome.chance;
+        if (roll <= cumulative) return outcome;
+    }
+    return outcomes[outcomes.length - 1];
+};
+
+// Suorittaa valitun aktiviteetin
+const doActivity = (activity) => {
+    const cost = activity.cost || 0;
+    if (usedActivities.includes(activity.id) || bamski.money < cost) return;
+
+    usedActivities.push(activity.id);
+    const result = activity.outcomes ? pickOutcome(activity.outcomes) : activity;
+    bamski.applyEffects(result.effects);
+    log(`Ikä ${bamski.age}: ${result.resultText}`);
+    activitiesBox.hidden = true;
+    deadCheck();
     render();
 };
 
@@ -124,7 +204,15 @@ startForm.addEventListener('submit', (event) => {
 
 const startgame = async () => {
     await loadEvents();
+    await loadActivities();
     usedEvents = [];
+    usedActivities = [];
+    ageButton.disabled = false;
+    activitiesButton.disabled = false;
+    relationButton.disabled = false;
+    eventBox.hidden = true;
+    activitiesBox.hidden = true;
+    relationBox.hidden = true;
     gameContainer.hidden = true;
     gameScreen.hidden = false;
     lifeLog.innerHTML = '';
@@ -136,14 +224,37 @@ const deadCheck = () => {
     if (bamski.health <= 0 || bamski.age >= 120) {
         log(`Ikä ${bamski.age}: Kuolin huonoon terveyteen.`);
         ageButton.disabled = true;
+        activitiesButton.disabled = true;
+        relationButton.disabled = true;
+        eventBox.hidden = true;
+        activitiesBox.hidden = true;
+        relationBox.hidden = true;
     }
 };
 
 ageButton.addEventListener('click', () => {
     bamski.age += 1;
+    usedActivities = [];
+    activitiesBox.hidden = true;
+    relationBox.hidden = true;
     log(`Ikä ${bamski.age}!`);
     const event = pickEvent();
     if (event) showEvent(event);
     deadCheck();
+    render();
+});
+
+activitiesButton.addEventListener('click', () => {
+    if (!activitiesBox.hidden) {
+        activitiesBox.hidden = true;
+        return;
+    }
+    showActivities();
+});
+
+relationButton.addEventListener('click', () => {
+    log(`Ikä ${bamski.age}: Päätin tutustua ihmisiin.`);
+    const event = pickEvent();
+    if (event) showEvent(event);
     render();
 });

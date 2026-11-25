@@ -1,0 +1,154 @@
+[
+  {
+    "id": "toys",
+    "label": "Leiki leluilla",
+    "minAge": 0,
+    "maxAge": 9,
+    "cost": 0,
+    "effects": { "happiness": 10, "smarts": 5 },
+    "resultText": "Leikit leluilla ja pidit hauskaa."
+  },
+  {
+    "id": "doctor_child",
+    "label": "Käy lääkärissä",
+    "minAge": 0,
+    "maxAge": 17,
+    "cost": 0,
+    "effects": { "health": 20 },
+    "resultText": "Vanhempasi veivät sinut lääkäriin. Vointisi parani!"
+  },
+  {
+    "id": "doctor_adult",
+    "label": "Käy lääkärissä",
+    "minAge": 18,
+    "maxAge": 120,
+    "cost": 50,
+    "effects": { "health": 20, "money": -50 },
+    "resultText": "Kävit lääkärissä hoidettavana ja vointisi parani. (-50 €)"
+  },
+  {
+    "id": "library",
+    "label": "Käy kirjastossa",
+    "minAge": 6,
+    "maxAge": 120,
+    "cost": 0,
+    "effects": { "smarts": 10, "happiness": 3 },
+    "resultText": "Kävit kirjastossa lukemassa ja opit uusia asioita."
+  },
+  {
+    "id": "meditate",
+    "label": "Meditoi ja ulkoile",
+    "minAge": 6,
+    "maxAge": 120,
+    "cost": 0,
+    "effects": { "happiness": 10, "health": 5 },
+    "resultText": "Kävit kävelyllä ja meditoit. Mielesi ja kehosi virkistyivät."
+  },
+  {
+    "id": "bottles",
+    "label": "Kerää pulloja",
+    "minAge": 6,
+    "maxAge": 17,
+    "cost": 0,
+    "effects": { "money": 20, "health": 3, "happiness": 5 },
+    "resultText": "Keräsit tyhjiä pulloja ja tienasit 20 €."
+  },
+  {
+    "id": "social_media",
+    "label": "Someta (TikTok)",
+    "minAge": 10,
+    "maxAge": 120,
+    "cost": 0,
+    "outcomes": [
+      {
+        "chance": 25,
+        "effects": { "clout": 20, "happiness": 15, "money": 50 },
+        "resultText": "Bämski-videosi meni viraaliksi! Clouttisi nousi kohisten ja sait 50 €."
+      },
+      {
+        "chance": 55,
+        "effects": { "clout": 8, "happiness": 5 },
+        "resultText": "Julkaisit videon someen ja sait uusia seuraajia."
+      },
+      {
+        "chance": 20,
+        "effects": { "clout": -5, "happiness": -5 },
+        "resultText": "Postauksesi oli cringe ja menetit seuraajia."
+      }
+    ]
+  },
+  {
+    "id": "gym",
+    "label": "Kuntosali",
+    "minAge": 12,
+    "maxAge": 120,
+    "cost": 0,
+    "effects": { "health": 10, "looks": 6, "happiness": 5 },
+    "resultText": "Vedit kovan treenin kuntosalilla. Kuntosi ja ulkonäkösi kohenivat!"
+  },
+  {
+    "id": "salon",
+    "label": "Parturi / Tyylipäivitys",
+    "minAge": 12,
+    "maxAge": 120,
+    "cost": 30,
+    "effects": { "money": -30, "looks": 12, "clout": 5, "happiness": 5 },
+    "resultText": "Kävit parturissa hakemassa tuoreen Bämski-tyylin. (-30 €)"
+  },
+  {
+    "id": "crime",
+    "label": "Tee rikos (Näpistys)",
+    "minAge": 12,
+    "maxAge": 120,
+    "cost": 0,
+    "outcomes": [
+      {
+        "chance": 60,
+        "effects": { "money": 80, "clout": 8, "happiness": 5 },
+        "resultText": "Keikka onnistui! Sait saaliiksi 80 € ja katu-uskottavuutta."
+      },
+      {
+        "chance": 40,
+        "effects": { "happiness": -20, "clout": -10, "health": -10 },
+        "resultText": "Jäit kiinni rysän päältä! Maine ja fiilis kärsivät."
+      }
+    ]
+  },
+  {
+    "id": "odd_job",
+    "label": "Keikkatyö",
+    "minAge": 14,
+    "maxAge": 120,
+    "cost": 0,
+    "effects": { "money": 150, "happiness": -5, "health": -3 },
+    "resultText": "Teit keikkatöitä ja tienasit 150 €."
+  },
+  {
+    "id": "clubbing",
+    "label": "Biletys / Yökerho",
+    "minAge": 18,
+    "maxAge": 120,
+    "cost": 40,
+    "effects": { "money": -40, "happiness": 15, "clout": 10, "health": -8 },
+    "resultText": "Kävit yökerhossa juhlimassa aamuun asti! (-40 €)"
+  },
+  {
+    "id": "casino",
+    "label": "Kasino (Uhkapeli)",
+    "minAge": 18,
+    "maxAge": 120,
+    "cost": 50,
+    "outcomes": [
+      {
+        "chance": 45,
+        "effects": { "money": 100, "happiness": 15 },
+        "resultText": "Onni suosi kasinolla! Voitit 100 €."
+      },
+      {
+        "chance": 55,
+        "effects": { "money": -50, "happiness": -10 },
+        "resultText": "Hävisit 50 € panoksesi kasinolla."
+      }
+    ]
+  }
+]

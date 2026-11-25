@@ -86,10 +86,26 @@ input {
     border-radius: 6px;
 }
 
-#event-choices {
+#activities-box,
+#relation-box {
+    margin-top: 12px;
+    padding: 12px;
+    background: #eef6ff;
+    border-radius: 6px;
+}
+
+#event-choices,
+#activities-choices,
+#relation-choices {
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+
+#button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
 }
 
 #age-button {
@@ -103,4 +119,33 @@ input {
     margin-left: auto;
     margin-right: auto;
     background: #1a9b4b;
+}
+
+#age-button[disabled],
+#activities-button[disabled],
+#relation-button[disabled] {
+    background: #aaa;
+    cursor: default;
+}
+
+#activities-button {
+    text-align: center;
+    display: block;
+    align-self: center;
+    width: fit-content;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 12px;
+}
+
+#relation-button {
+    text-align: center;
+    display: block;
+    align-self: center;
+    width: fit-content;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 12px;
 }
